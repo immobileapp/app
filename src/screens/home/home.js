@@ -9,7 +9,18 @@ import Statistics from './components/statistics'
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
+import AsyncStorageHelper from '../../helpers/asyncStorageHelper'
+
 export default class Home extends React.Component {
+
+	componentDidMount() {
+		// AsyncStorageHelper.save('test', { pidar: 'blyaaaaat' })
+		// 	.then(() => {
+		// 		AsyncStorageHelper.find('test')
+		// 			.then(result => console.error(result))
+		// 	})
+	}
+
 	render() {
 		return (
 			<View style={ genericStyle.whiteScreen }>
@@ -25,11 +36,7 @@ export default class Home extends React.Component {
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ this.props.handleButton }
-							label={ 
-								this.props.parked 
-									? 'Deixar Vaga' 
-									: 'Estacionar' 
-							}
+							label={ this.props.parked ? 'Deixar Vaga' : 'Estacionar' }
 						/>
 					</View>
 					<Greetings/>
