@@ -1,4 +1,5 @@
 {
   "name": "immobileapp",
-  "displayName": "Immobile"
+  "displayName": "Immobile",
+  "storagePrefix": "IMMOBILE"
 }

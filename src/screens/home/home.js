@@ -9,16 +9,28 @@ import Statistics from './components/statistics'
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
-import AsyncStorageHelper from '../../helpers/asyncStorageHelper'
+import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHelper'
 
 export default class Home extends React.Component {
 
+	componentWillMount() {
+		AsyncStorageHelper.subscribe('test.onchange', data => {
+			console.warn('HAAA')
+		})
+	}
+
 	componentDidMount() {
-		// AsyncStorageHelper.save('test', { pidar: 'blyaaaaat' })
-		// 	.then(() => {
-		// 		AsyncStorageHelper.find('test')
-		// 			.then(result => console.error(result))
-		// 	})
+		setTimeout(() => {
+			AsyncStorageHelper.save('test', { cyka: 'blyat' })
+		}, 1000)
+
+		setTimeout(() => {
+			AsyncStorageHelper.update('test', { cyka: 'blyat' }, { cyka: 'blyet' })
+		}, 2000)
+
+		setTimeout(() => {
+			AsyncStorageHelper.save('test', { cyka: 'blyat' })
+		}, 3000)
 	}
 
 	render() {
