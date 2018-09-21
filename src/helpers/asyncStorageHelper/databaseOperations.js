@@ -15,7 +15,9 @@ const findById = (key, id) => (
 )
 
 const save = (key, value) => (
-	BasicOperations.updateData(key, prevValue => [...prevValue, value])
+	BasicOperations.updateData(key, prevValue => 
+		[...prevValue, { ...value, ...{ id: BasicOperations.generateUuid() }}]
+	)
 )
 
 const update = (key, query, value) => (

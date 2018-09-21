@@ -20,17 +20,12 @@ export default class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		setTimeout(() => {
-			AsyncStorageHelper.save('test', { cyka: 'blyat' })
-		}, 1000)
-
-		setTimeout(() => {
-			AsyncStorageHelper.update('test', { cyka: 'blyat' }, { cyka: 'blyet' })
-		}, 2000)
-
-		setTimeout(() => {
-			AsyncStorageHelper.save('test', { cyka: 'blyat' })
-		}, 3000)
+		// setTimeout(() => {
+		// 	AsyncStorageHelper.save('test', { cyka: 'blyat' })
+		// 		.then(data => {
+		// 			console.error(data)
+		// 		})
+		// }, 1000)
 	}
 
 	render() {
