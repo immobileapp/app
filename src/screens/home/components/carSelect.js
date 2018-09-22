@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
-import ChangeIcon from './changeIcon'
+import ChangeIcon from '../../../components/icons/changeIcon'
 
 import style from '../homeStyle'
 import genericStyle from '../../../genericStyle'

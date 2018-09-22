@@ -1,8 +1,8 @@
 import React from 'react'
 import { Svg, G, Path, Symbol, Use } from 'react-native-svg'
 
-import dimensions from '../../../../assets/values/dimensions'
-import colors from '../../../../assets/values/colors'
+import dimensions from '../../../assets/values/dimensions'
+import colors from '../../../assets/values/colors'
 
 const { changeButtonWidth, changeIconWidth } = dimensions,
 	  { darkRed } = colors
