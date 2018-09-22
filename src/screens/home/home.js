@@ -9,7 +9,25 @@ import Statistics from './components/statistics'
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
+import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHelper'
+
 export default class Home extends React.Component {
+
+	componentWillMount() {
+		AsyncStorageHelper.subscribe('test.onchange', data => {
+			console.warn('HAAA')
+		})
+	}
+
+	componentDidMount() {
+		// setTimeout(() => {
+		// 	AsyncStorageHelper.save('test', { cyka: 'blyat' })
+		// 		.then(data => {
+		// 			console.error(data)
+		// 		})
+		// }, 1000)
+	}
+
 	render() {
 		return (
 			<View style={ genericStyle.whiteScreen }>
@@ -25,11 +43,7 @@ export default class Home extends React.Component {
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ this.props.handleButton }
-							label={ 
-								this.props.parked 
-									? 'Deixar Vaga' 
-									: 'Estacionar' 
-							}
+							label={ this.props.parked ? 'Deixar Vaga' : 'Estacionar' }
 						/>
 					</View>
 					<Greetings/>
