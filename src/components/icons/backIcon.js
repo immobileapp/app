@@ -7,28 +7,26 @@ import colors from '../../../assets/values/colors'
 const { backIconWidth, backIconTraceWidth, backIconTraceHeight } = dimensions,
 	  { white } = colors
 
-export default class BackIcon extends React.Component {
-	render() {
-		return (
-			<Svg
-				width={ backIconWidth / 2 }
-				height={ backIconWidth }
-			>
-				<G 
-					rotate="45"
-					origin={ (backIconTraceHeight / 2)+', '+backIconTraceHeight }
-				>
-					<Rect
-						x="0"
-						y="0"
-						width={ backIconTraceHeight }
-						height={ backIconTraceHeight }
-	            		strokeWidth={ backIconTraceWidth }
-						stroke={ white }
-						fill="transparent"
-					/>
-				</G>
-			</Svg>
-		)
-	}
-}
+const BackIcon = () => (
+	<Svg
+		width={ backIconWidth / 2 }
+		height={ backIconWidth }
+	>
+		<G 
+			origin={ `${ (backIconTraceHeight / 2) }, ${ backIconTraceHeight }` }
+			rotation="45"
+		>
+			<Rect
+				x="0"
+				y="0"
+				width={ backIconTraceHeight }
+				height={ backIconTraceHeight }
+        		strokeWidth={ backIconTraceWidth }
+				stroke={ white }
+				fill="transparent"
+			/>
+		</G>
+	</Svg>
+)
+
+export default BackIcon
