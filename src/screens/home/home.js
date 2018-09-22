@@ -13,6 +13,8 @@ import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHel
 
 export default class Home extends React.Component {
 
+	state = {}
+
 	componentWillMount() {
 		AsyncStorageHelper.subscribe('test.onchange', data => {
 			console.warn('HAAA')
@@ -42,8 +44,8 @@ export default class Home extends React.Component {
 				<View style={ genericStyle.majorAurea }>
 					<View style={ style.parkButton }>
 						<RoundButton
-							onPress={ this.props.handleButton }
-							label={ this.props.parked ? 'Deixar Vaga' : 'Estacionar' }
+							onPress={ () => console.warn('pidar') }
+							label={ this.state.parked ? 'Deixar Vaga' : 'Estacionar' }
 						/>
 					</View>
 					<Greetings/>
