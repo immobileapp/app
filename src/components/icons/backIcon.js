@@ -1,7 +1,8 @@
 import React from 'react'
 import { Svg, G, Rect } from 'react-native-svg'
+
 import dimensions from '../../../assets/values/dimensions'
-import colors from '../../../asets/values/colors'
+import colors from '../../../assets/values/colors'
 
 const { backIconWidth, backIconTraceWidth, backIconTraceHeight } = dimensions,
 	  { white } = colors
