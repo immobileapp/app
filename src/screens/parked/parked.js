@@ -28,11 +28,11 @@ export default class Parked extends React.Component {
 
 	park() {
 		ParkingService.park()
-		this.props.navigation.navigate('Parked')
 	}
 
 	leave() {
 		ParkingService.leave(this.state.currentParking.id)
+		this.props.navigation.navigate('Home')
 	}
 
 	render() {

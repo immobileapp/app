@@ -28,4 +28,4 @@ const notifySubscribers = (key, operation, data) => {
 	subscribers[operation][key].map(callback => callback(data))
 }
 
-export default { subscribe, notifySubscribers }
+export default { subscribe, notifySubscribers, getKeyAndOperation }

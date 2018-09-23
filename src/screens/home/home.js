@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image, Text, AsyncStorage } from 'react-native'
+import { View, Image, Text } from 'react-native'
 
 import RoundButton from '../../components/roundButton/roundButton'
 import CarSelect from './components/carSelect'
