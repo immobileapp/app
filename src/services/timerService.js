@@ -13,11 +13,10 @@ const start = millisecons => {
 const run = () => {
 	clearTimeout(timeout)
 	timeout = setTimeout(() => {
-		notifySubscribers()
-		if(!running) return
-
 		elapsed += 1000
-		run()
+		notifySubscribers()
+
+		running && run()
 	}, 1000)
 }
 
