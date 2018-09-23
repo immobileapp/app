@@ -15,9 +15,13 @@ export default class Parked extends React.Component {
 	state = {}
 
 	componentWillMount() {
-		ParkingService.watchCurrentParking(currentParking => {
+		this.unsubscribe = ParkingService.watchCurrentParking(currentParking => {
 			this.setState({ currentParking })
 		})
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe()
 	}
 
 	handleClick() {
@@ -51,11 +55,7 @@ export default class Parked extends React.Component {
 				<View style={ genericStyle.centerContent }>
 					<Timer 
 						style={ style.timer }
-						timer={{
-							hours: '00',
-							minutes: '00',
-							seconds: '00'
-						}}
+						time="00:00:00"
 					/>
 					<View style={ style.leaveButton }>
 						<RoundButton 

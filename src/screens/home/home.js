@@ -17,9 +17,13 @@ export default class Home extends React.Component {
 	state = {}
 
 	componentWillMount() {
-		ParkingService.watchCurrentParking(currentParking => {
+		this.unsubscribe = ParkingService.watchCurrentParking(currentParking => {
 			this.setState({ currentParking })
 		})
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe()
 	}
 
 	handleClick() {

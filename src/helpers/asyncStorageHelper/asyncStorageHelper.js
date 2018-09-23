@@ -40,7 +40,7 @@ const subscribe = (type, callback) => {
 	DatabaseOperations.find(StorageObserver.getKeyAndOperation(type).key)
 		.then(result => callback(result))
 
-	StorageObserver.subscribe(type, callback)
+	return StorageObserver.subscribe(type, callback)
 }
 
 export default { find, findById, save, update, remove, subscribe }
