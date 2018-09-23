@@ -4,7 +4,7 @@ import { View, Image, Text } from 'react-native'
 import genericStyle from '../../../genericStyle'
 import style from '../homeStyle'
 
-const Statistics = () => (
+const Statistics = props => (
 	<View style={ style.statistics }>
 		<View style={ style.infContainer }>
 			<View style={ style.inf }>
@@ -13,7 +13,7 @@ const Statistics = () => (
 					source={ require('../../../../assets/footage/watch.png') }
 				/>
 				<Text style={ style.statsText }>
-					{ this.props.time && getHours() }
+					{ props.time && getHours(props.time) }
 				</Text>
 			</View>
 			<View style={ style.inf }>
@@ -22,7 +22,7 @@ const Statistics = () => (
 					source={ require('../../../../assets/footage/coin.png') }
 				/>
 				<Text style={ style.statsText }>
-					{ this.props.money }
+					{ props.money }
 				</Text>
 			</View>
 		</View>
@@ -34,8 +34,8 @@ const Statistics = () => (
 	</View>
 )
 
-const getHours = () => {
-	let { hour, minute, second } = this.props.time
+const getHours = time => {
+	let { hour, minute, second } = time
 
 	if (hour != 0) 	 return `${ hour }h`
 	if (minute != 0) return `${ minute }m`

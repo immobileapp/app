@@ -1,8 +1,8 @@
 import DatabaseOperations from './databaseOperations'
 import StorageObserver from './storageObserver'
 
-const find = (key, query) => {
-	return DatabaseOperations.find(key, query)
+const find = key => {
+	return DatabaseOperations.find(key)
 }
 
 const findById = (key, id) => {
