@@ -34,7 +34,7 @@ export default class Home extends React.Component {
 	}
 
 	leave() {
-		ParkingService.leave(this.state.currentParking.id)
+		ParkingService.leave()
 	}
 
 	render() {

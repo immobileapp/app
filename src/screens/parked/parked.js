@@ -31,7 +31,7 @@ export default class Parked extends React.Component {
 	}
 
 	leave() {
-		ParkingService.leave(this.state.currentParking.id)
+		ParkingService.leave()
 		this.props.navigation.navigate('Home')
 	}
 
