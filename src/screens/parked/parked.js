@@ -8,9 +8,32 @@ import Timer from './components/timer'
 import RoundButton from '../../components/roundButton/roundButton'
 import BackIcon from '../../components/icons/backIcon'
 
+import ParkingService from '../../services/parkingService'
+
 export default class Parked extends React.Component {
 
 	state = {}
+
+	componentWillMount() {
+		ParkingService.watchCurrentParking(currentParking => {
+			this.setState({ currentParking })
+		})
+	}
+
+	handleClick() {
+		this.state.currentParking
+			? this.leave()
+			: this.park()
+	}
+
+	park() {
+		ParkingService.park()
+	}
+
+	leave() {
+		ParkingService.leave()
+		this.props.navigation.navigate('Home')
+	}
 
 	render() {
 		return (
@@ -37,8 +60,12 @@ export default class Parked extends React.Component {
 					<View style={ style.leaveButton }>
 						<RoundButton 
 							color="white"
-							label={ this.state.parked ? 'Deixar Vaga' : 'Estacionar' }
-							onPress={ () => console.warn('pidar') }
+							label={ 
+								this.state.currentParking 
+									? 'Deixar Vaga' 
+									: 'Estacionar' 
+							}
+							onPress={ () => this.handleClick() }
 						/>
 					</View>
 				</View>

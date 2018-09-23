@@ -1,8 +1,8 @@
 import DatabaseOperations from './databaseOperations'
 import StorageObserver from './storageObserver'
 
-const find = (key, query) => {
-	return DatabaseOperations.find(key, query)
+const find = key => {
+	return DatabaseOperations.find(key)
 }
 
 const findById = (key, id) => {
@@ -36,4 +36,11 @@ const remove = (key, query) => {
 	})
 }
 
-export default { find, findById, save, update, remove, ...StorageObserver }
+const subscribe = (type, callback) => {
+	DatabaseOperations.find(StorageObserver.getKeyAndOperation(type).key)
+		.then(result => callback(result))
+
+	StorageObserver.subscribe(type, callback)
+}
+
+export default { find, findById, save, update, remove, subscribe }

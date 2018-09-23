@@ -1,17 +1,13 @@
 import BasicOperations from './basicOperations'
 
 const find = (key, query) => (
-	BasicOperations.get(key).then(found => 
-		query
-			? found.filter(item => 
-				item[formatQuery(query).key] === formatQuery(query).value
-			)
-			: found
-	)
+	BasicOperations.get(key).then(result => result || [])
 )
 
 const findById = (key, id) => (
-	find(key, { id })[0]
+	BasicOperations.get(key).then(result => (
+		result.filter(item => item.id === id)[0]
+	))
 )
 
 const save = (key, value) => (

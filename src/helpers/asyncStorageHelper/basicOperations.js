@@ -10,7 +10,7 @@ const get = key => (
 
 const set = (key, value) => (
 	AsyncStorage.setItem(getFullKey(key), JSON.stringify(value))
-		.then(() => JSON.stringify(value))
+		.then(() => value)
 )
 
 const updateData = (key, callback) => (

@@ -9,6 +9,7 @@ import Statistics from './components/statistics'
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
+import ParkingService from '../../services/parkingService'
 import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHelper'
 
 export default class Home extends React.Component {
@@ -16,18 +17,24 @@ export default class Home extends React.Component {
 	state = {}
 
 	componentWillMount() {
-		AsyncStorageHelper.subscribe('test.onchange', data => {
-			console.warn('HAAA')
+		ParkingService.watchCurrentParking(currentParking => {
+			this.setState({ currentParking })
 		})
 	}
 
-	componentDidMount() {
-		// setTimeout(() => {
-		// 	AsyncStorageHelper.save('test', { cyka: 'blyat' })
-		// 		.then(data => {
-		// 			console.error(data)
-		// 		})
-		// }, 1000)
+	handleClick() {
+		this.state.currentParking
+			? this.leave()
+			: this.park()
+	}
+
+	park() {
+		ParkingService.park()
+		this.props.navigation.navigate('Parked')
+	}
+
+	leave() {
+		ParkingService.leave()
 	}
 
 	render() {
@@ -44,8 +51,12 @@ export default class Home extends React.Component {
 				<View style={ genericStyle.majorAurea }>
 					<View style={ style.parkButton }>
 						<RoundButton
-							onPress={ () => console.warn('pidar') }
-							label={ this.state.parked ? 'Deixar Vaga' : 'Estacionar' }
+							onPress={ () => this.handleClick() }
+							label={ 
+								this.state.currentParking 
+									? 'Deixar Vaga' 
+									: 'Estacionar' 
+								}
 						/>
 					</View>
 					<Greetings/>
