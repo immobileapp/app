@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Platform, UIManager, StatusBar } from 'react-native'
 import Navigation from './src/navigation'
 
+import NotificationService from './src/services/notificationService'
+
 export default class App extends React.Component {
 
     constructor() {
@@ -9,6 +11,8 @@ export default class App extends React.Component {
 
         Platform.OS === 'android' &&
             UIManager.setLayoutAnimationEnabledExperimental(true)
+
+        NotificationService.initialize()
     }
 
     render() {

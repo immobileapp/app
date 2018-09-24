@@ -9,15 +9,27 @@ import RoundButton from '../../components/roundButton/roundButton'
 import BackIcon from '../../components/icons/backIcon'
 
 import ParkingService from '../../services/parkingService'
+import TimerService from '../../services/timerService'
 
 export default class Parked extends React.Component {
 
-	state = {}
+	state = {
+		time: '00:00:00'
+	}
 
 	componentWillMount() {
-		ParkingService.watchCurrentParking(currentParking => {
+		this.unsubscribe = ParkingService.watchCurrentParking(currentParking => {
 			this.setState({ currentParking })
 		})
+
+		this.unsubscribeFromTimer = TimerService.onTimerChange(time => {
+			this.setState({ time })
+		})
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe()
+		this.unsubscribeFromTimer()
 	}
 
 	handleClick() {
@@ -51,11 +63,7 @@ export default class Parked extends React.Component {
 				<View style={ genericStyle.centerContent }>
 					<Timer 
 						style={ style.timer }
-						timer={{
-							hours: '00',
-							minutes: '00',
-							seconds: '00'
-						}}
+						time={ this.state.time }
 					/>
 					<View style={ style.leaveButton }>
 						<RoundButton 
