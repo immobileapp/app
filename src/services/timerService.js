@@ -14,7 +14,7 @@ const run = () => {
 	clearTimeout(timeout)
 	timeout = setTimeout(() => {
 		elapsed += 1000
-		notifySubscribers()
+		running && notifySubscribers()
 
 		running && run()
 	}, 1000)
@@ -31,7 +31,7 @@ const stop = () => {
 const onTimerChange = callback => {
 	subscribers.push(callback)
 
-	callback(getTimerFromMilliseconds(elapsed))
+	running && callback(getTimerFromMilliseconds(elapsed))
 	return () => unsubscribe(subscribers.length - 1)
 }
 
@@ -40,7 +40,9 @@ const unsubscribe = index => {
 }
 
 const notifySubscribers = () => {
-	subscribers.forEach(callback => callback(getTimerFromMilliseconds(elapsed)))
+	subscribers.forEach(callback => 
+		callback(getTimerFromMilliseconds(elapsed), running)
+	)
 }
 
 const getTimerFromMilliseconds = millisecons => {

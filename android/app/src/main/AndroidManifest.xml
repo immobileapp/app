@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.immobileapp">
 
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
@@ -13,9 +14,11 @@
         android:name="${applicationId}.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
-
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!--  -->
+    <!-- APP -->
+    <!--  -->
 
     <application
       android:name=".MainApplication"
@@ -38,11 +41,6 @@
       <!--  -->
       <!-- NOTIFICATIONS -->
       <!--  -->
-
-      <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
-                android:value="YOUR NOTIFICATION CHANNEL NAME"/>
-        <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_description"
-                    android:value="YOUR NOTIFICATION CHANNEL DESCRIPTION"/>
 
         <!-- <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color"
                     android:resource="@android:color/white"/> -->
@@ -72,16 +70,5 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
-        <!-- < Else > -->
-        <service
-            android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
     </application>
-
 </manifest>
