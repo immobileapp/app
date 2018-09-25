@@ -1,3 +1,5 @@
+import BackgroundTimer from 'react-native-background-timer'
+
 let running = false,
 	elapsed = 0,
 	timeout,
@@ -11,8 +13,8 @@ const start = millisecons => {
 }
 
 const run = () => {
-	clearTimeout(timeout)
-	timeout = setTimeout(() => {
+	BackgroundTimer.clearTimeout(timeout)
+	timeout = BackgroundTimer.setTimeout(() => {
 		elapsed += 1000
 		running && notifySubscribers()
 
@@ -24,7 +26,7 @@ const stop = () => {
 	running = false
 	elapsed = 0
 
-	clearTimeout(timeout)
+	BackgroundTimer.clearTimeout(timeout)
 	notifySubscribers()
 }
 
