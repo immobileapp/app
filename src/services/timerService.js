@@ -1,4 +1,5 @@
 import BackgroundTimer from 'react-native-background-timer'
+import { Platform } from 'react-native'
 
 let running = false,
 	elapsed = 0,
@@ -9,16 +10,31 @@ const start = millisecons => {
 	elapsed = millisecons || 0
 	running = true
 	
-	run()
+	Platform.OS === 'ios' &&
+		BackgroundTimer.start()
+
+	Platform.OS === 'android'
+		? runOnAndroid()
+		: runOnIOS()
 }
 
-const run = () => {
+const runOnAndroid = () => {
 	BackgroundTimer.clearTimeout(timeout)
 	timeout = BackgroundTimer.setTimeout(() => {
 		elapsed += 1000
 		running && notifySubscribers()
 
-		running && run()
+		running && runOnAndroid()
+	}, 1000)
+}
+
+const runOnIOS = () => {
+	clearTimeout(timeout)
+	timeout = setTimeout(() => {
+		elapsed += 1000
+		running && notifySubscribers()
+
+		running && runOnAndroid()
 	}, 1000)
 }
 
@@ -26,8 +42,20 @@ const stop = () => {
 	running = false
 	elapsed = 0
 
-	BackgroundTimer.clearTimeout(timeout)
+	Platform.OS === 'android'
+		? stopAndroidTimer()
+		: stopIOSTimer()
+	
 	notifySubscribers()
+}
+
+const stopAndroidTimer = () => {
+	BackgroundTimer.clearTimeout(timeout)
+}
+
+const stopIOSTimer = () => {
+	clearTimeout(timeout)
+	BackgroundTimer.stop()
 }
 
 const onTimerChange = callback => {
