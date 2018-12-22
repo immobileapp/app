@@ -12,14 +12,14 @@ export default class App extends React.Component {
         Platform.OS === 'android' &&
             UIManager.setLayoutAnimationEnabledExperimental(true)
 
-        NotificationService.initialize()
+        // NotificationService.initialize()
     }
 
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <StatusBar 
-                    translucent={ true } 
+                <StatusBar
+                    translucent={ true }
                     backgroundColor="transparent"
                 />
                 <Navigation />
