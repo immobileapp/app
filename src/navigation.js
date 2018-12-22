@@ -1,18 +1,32 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { createMaterialTopTabNavigator } from 'react-navigation'
 
-import Home from './screens/home/home'
-import Parked from './screens/parked/parked'
+import AppNavigation from './screens/appNavigation'
+import Login from './screens/login/login'
+import userService from './services/userService'
 
 export default class Navigation extends React.Component {
 
+	state = {
+		user: null,
+		loading: true
+	}
+
+	componentWillMount() {
+		userService.watchCurrentUser(user => {
+			this.setState({ user, loading: false })
+		})
+	}
+
 	getNavigator() {
+		const { user } = this.state
 		return createMaterialTopTabNavigator({
-			'Home': { screen: Home },
-			'Parked': { screen: Parked }
+			'Login': { screen: Login },
+			'App': { screen: AppNavigation }
 		}, {
-			swipeEnabled: true,
+			swipeEnabled: false,
+			initialRouteName: user ? 'Login' : 'App',
 			tabBarOptions: {
 				style: {
 					display: 'none'
@@ -22,6 +36,7 @@ export default class Navigation extends React.Component {
 	}
 
 	render() {
+		if (this.state.loading) return <View />
 		const Navigator = this.getNavigator()
 		return <Navigator />
 	}
