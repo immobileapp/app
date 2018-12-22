@@ -16,11 +16,15 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "babel-plugin-module-resolver": "^3.1.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.45.3",
     "react-test-renderer": "16.5.0"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "engines": {
+    "node": "10.13.0"
   }
 }
