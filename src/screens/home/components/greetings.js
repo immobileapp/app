@@ -7,7 +7,7 @@ const Greetings = () => (
 		<Text style={ style.greetingsText }>
 			Olá, seja&nbsp;
 			<Text style={[ style.greetingsText, style.greetingsTextBold ]}>
-				bem vindo!
+				bem-vindo!
 			</Text>
 		</Text>
 		<Text style={[ style.greetingsText, style.greetingsTextLight ]}>
@@ -15,7 +15,7 @@ const Greetings = () => (
 			<Text style={[ style.greetingsText, style.greetingsTextBold ]}>
 				mês
 			</Text>
-			, você ja usou:
+			, você já usou:
 		</Text>
 	</View>
 )
