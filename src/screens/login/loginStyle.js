@@ -39,6 +39,9 @@ const style = StyleSheet.create({
     },
     forwardButton: {
         margin: sideMargin
+    },
+    inputWrapper: {
+        margin: sideMargin
     }
 })
 

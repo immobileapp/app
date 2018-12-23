@@ -1,13 +1,19 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import RoundButton from '../../../components/roundButton/roundButton'
 import genericStyle from '../../../genericStyle'
 import style from '../loginStyle'
+import GenericStructure from './genericStructure'
 
 export default class Welcome extends React.Component {
+
+    forward() {
+        this.props.navigation.navigate('PersonDocument')
+    }
+
     render() {
         return (
-            <View style={ genericStyle.redScreen }>
+            <GenericStructure forward={ () => this.forward() }
+                forwardButtonLabel="Vamos Lá" >
                 <View style={ genericStyle.justifyCenter }>
                     <Text style={ style.welcomeText }>
                         Olá, seja bem-vindo
@@ -19,13 +25,8 @@ export default class Welcome extends React.Component {
                     <Text style={ style.invitationText} >
                         Vamos começar?
                     </Text>
-                    <RoundButton
-                        label="Vamos lá"
-                        color="white" 
-                        style={ style.forwardButton}
-                        onPress={ () => this.handleClick() }/>
                 </View>
-            </View>
+            </GenericStructure>
         )
     }
 }
