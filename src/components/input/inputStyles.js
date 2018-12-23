@@ -10,7 +10,7 @@ const style = StyleSheet.create({
         width: '100%',
         borderBottomColor: white, 
         borderBottomWidth: 1,
-        paddingLeft: 20,
+        paddingLeft: 10,
         fontSize: mediumText,
         color: lightGrey
     }
