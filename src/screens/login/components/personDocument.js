@@ -12,12 +12,12 @@ export default class PersonDocument extends React.Component {
     }
 
     forward() {
-        // this.props.navigation.navigate('PersonDocument')
+        this.props.navigation.navigate('LicencePlate')
     }
 
     render() {
         return (
-            <GenericStructure forward={ () => this.forward() }
+            <GenericStructure { ...this.props } forward={ () => this.forward() }
                 forwardButtonLabel="Avançar" >
                 <View style={ genericStyle.justifyCenter }>
                     <Text style={ style.welcomeText } >Pessoal</Text>
