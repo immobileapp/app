@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { createMaterialTopTabNavigator } from 'react-navigation'
 
 import AppNavigation from './screens/appNavigation'
-import Login from './screens/login/login'
+import LoginNavigation from './screens/login/loginNavigation'
 import userService from './services/userService'
 
 export default class Navigation extends React.Component {
@@ -22,11 +22,11 @@ export default class Navigation extends React.Component {
 	getNavigator() {
 		const { user } = this.state
 		return createMaterialTopTabNavigator({
-			'Login': { screen: Login },
+			'Login': { screen: LoginNavigation },
 			'App': { screen: AppNavigation }
 		}, {
 			swipeEnabled: false,
-			initialRouteName: user ? 'Login' : 'App',
+			initialRouteName: user ? 'App' : 'Login',
 			tabBarOptions: {
 				style: {
 					display: 'none'

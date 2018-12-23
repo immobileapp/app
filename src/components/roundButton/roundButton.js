@@ -14,7 +14,8 @@ export default class RoundButton extends React.Component {
 
 	render() {
 		return (
-			<TouchableOpacity onPress={ this.props.onPress }>
+			<TouchableOpacity style={ this.props.style || {} } 
+				onPress={ this.props.onPress }>
 				<View style={[ style.button,
 					this.props.color == 'white'
 						? style.whiteButton
