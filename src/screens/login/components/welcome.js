@@ -13,6 +13,7 @@ export default class Welcome extends React.Component {
     render() {
         return (
             <GenericStructure forward={ () => this.forward() }
+                { ...this.props } 
                 forwardButtonLabel="Vamos Lá" >
                 <View style={ genericStyle.justifyCenter }>
                     <Text style={ style.welcomeText }>

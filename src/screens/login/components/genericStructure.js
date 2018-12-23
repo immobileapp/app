@@ -1,10 +1,14 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Button } from 'react-native'
 import RoundButton from '../../../components/roundButton/roundButton'
 import genericStyle from '../../../genericStyle'
 import style from '../loginStyle'
 
-export default class Welcome extends React.Component {
+export default class GenericStructure extends React.Component {
+
+    backward() {
+        this.props.navigation.goBack()
+    }
 
     render() {
         return (

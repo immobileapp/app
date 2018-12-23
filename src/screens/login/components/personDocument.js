@@ -17,7 +17,8 @@ export default class PersonDocument extends React.Component {
 
     render() {
         return (
-            <GenericStructure { ...this.props } forward={ () => this.forward() }
+            <GenericStructure { ...this.props } 
+                forward={ () => this.forward() }
                 forwardButtonLabel="Avançar" >
                 <View style={ genericStyle.justifyCenter }>
                     <Text style={ style.welcomeText } >Pessoal</Text>
