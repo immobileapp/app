@@ -19,7 +19,7 @@ const watchAndSummarizeParking = callback => (
 )
 
 const calculateTotalPrice = milliseconds => (
-  ((milliseconds / 36000000) * HOUR_PRICE).toFixed(2)
+  ((milliseconds / 3600000) * HOUR_PRICE).toFixed(2)
 )
 
 export default { watchAndSummarizeParking }
