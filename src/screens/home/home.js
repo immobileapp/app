@@ -10,20 +10,28 @@ import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
 import ParkingService from '../../services/parkingService'
+import StatisticsService from '../../services/statisticsService'
 import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHelper'
 
 export default class Home extends React.Component {
 
-	state = {}
+	state = {
+    stats: {}
+  }
 
 	componentWillMount() {
-		this.unsubscribe = ParkingService.watchCurrentParking(currentParking => {
+		this.unsubscribeFromParking = ParkingService.watchCurrentParking(currentParking => {
 			this.setState({ currentParking })
-		})
+    })
+
+    this.unsubscribeFromStats = StatisticsService.watchAndSummarizeParking(stats => {
+			this.setState({ stats })
+    })
 	}
 
 	componentWillUnmount() {
-		this.unsubscribe()
+    this.unsubscribeFromParking()
+    this.unsubscribeFromStats()
 	}
 
 	handleClick() {
@@ -56,15 +64,15 @@ export default class Home extends React.Component {
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ () => this.handleClick() }
-							label={ 
-								this.state.currentParking 
-									? 'Deixar Vaga' 
-									: 'Estacionar' 
+							label={
+								this.state.currentParking
+									? 'Deixar Vaga'
+									: 'Estacionar'
 								}
 						/>
 					</View>
 					<Greetings/>
-					<Statistics/>
+					<Statistics { ...this.state.stats }/>
 				</View>
 			</View>
 		)

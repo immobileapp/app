@@ -8,16 +8,16 @@ const Statistics = props => (
 	<View style={ style.statistics }>
 		<View style={ style.infContainer }>
 			<View style={ style.inf }>
-				<Image 
+				<Image
 					style={ style.statsIcon }
 					source={ require('../../../../assets/footage/watch.png') }
 				/>
 				<Text style={ style.statsText }>
-					{ props.time && getHours(props.time) }
+					{ props.time }
 				</Text>
 			</View>
 			<View style={ style.inf }>
-				<Image 
+				<Image
 					style={ style.statsIcon }
 					source={ require('../../../../assets/footage/coin.png') }
 				/>
@@ -33,14 +33,5 @@ const Statistics = props => (
 		</View>
 	</View>
 )
-
-const getHours = time => {
-	let { hour, minute, second } = time
-
-	if (hour != 0) 	 return `${ hour }h`
-	if (minute != 0) return `${ minute }m`
-	
-	return `${ second }s`
-}
 
 export default Statistics

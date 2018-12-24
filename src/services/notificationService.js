@@ -34,7 +34,7 @@ const getIOSNotification = message => ({
 })
 
 const getNotification = message => ({
-	title: 'Você esta estacionado a',
+	title: 'Você está estacionado a',
 	message,
 	playSound: false
 })
