@@ -5,6 +5,7 @@ import RoundButton from '../../components/roundButton/roundButton'
 import CarSelect from './components/carSelect'
 import Greetings from './components/greetings'
 import Statistics from './components/statistics'
+import NoParkingsMessage from './components/noParkingsMessage'
 
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
@@ -47,7 +48,14 @@ export default class Home extends React.Component {
 
 	leave() {
 		ParkingService.leave()
-	}
+  }
+
+  showStatsOrCallToPark() {
+    let hasParkedYet = this.state.stats.time == '0s'
+
+    return hasParkedYet ? <NoParkingsMessage/>
+                        : <Statistics { ...this.state.stats }/>
+  }
 
 	render() {
 		return (
@@ -72,7 +80,7 @@ export default class Home extends React.Component {
 						/>
 					</View>
 					<Greetings/>
-					<Statistics { ...this.state.stats }/>
+					{ this.showStatsOrCallToPark() }
 				</View>
 			</View>
 		)

@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native'
 import dimensions from '../../../assets/values/dimensions'
 import colors from '../../../assets/values/colors'
 
-const { 
-	parkButtonWidth, 
+const {
+	parkButtonWidth,
 	roundButtonHeight,
 	largeText,
 	extraLargeText,
@@ -67,7 +67,11 @@ const style = StyleSheet.create({
 	},
 	greetingsTextLight: {
 		fontWeight: '100'
-	},
+  },
+  noParkingsMessage: {
+    fontStyle: 'italic',
+    fontSize: normalText,
+  },
 	statistics: {
 		display: 'flex',
 		alignItems: 'stretch',
