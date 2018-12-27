@@ -42,6 +42,10 @@ const style = StyleSheet.create({
     },
     inputWrapper: {
         margin: sideMargin
+    },
+    error: {
+        color: colors.white,
+        fontSize: normalText
     }
 })
 

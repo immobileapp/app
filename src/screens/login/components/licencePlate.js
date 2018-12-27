@@ -12,7 +12,7 @@ export default class LicencePlate extends React.Component {
     }
 
     forward() {
-        // this.props.navigation.navigate('PersonDocument')
+        
     }
 
     render() {
@@ -25,7 +25,7 @@ export default class LicencePlate extends React.Component {
                     <View style={ style.inputWrapper}>
                         <TextInput value={ this.state.licence }
                             placeholder="AAA-1234"
-                            onChange={ licence => this.setState({ licence }) } />
+                            onChangeText={ licence => this.setState({ licence }) } />
 
                     </View>
                 </View>
