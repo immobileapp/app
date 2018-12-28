@@ -54,7 +54,8 @@ export default class Home extends React.Component {
     let hasParkedYet = this.state.stats.time == '0s'
 
     return hasParkedYet ? <NoParkingsMessage/>
-                        : <Statistics { ...this.state.stats }/>
+                        : <Statistics { ...this.state.stats }
+                                      navigation={ this.props.navigation } />
   }
 
 	render() {

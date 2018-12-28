@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, Text, TouchableHighlight } from 'react-native'
 
-import genericStyle from '../../../genericStyle'
 import style from '../homeStyle'
 
 const Statistics = props => (
@@ -27,9 +26,11 @@ const Statistics = props => (
 			</View>
 		</View>
 		<View style={ style.moreStats }>
-			<Text style={ style.moreStatsText }>
-				ver mais
-			</Text>
+      <TouchableHighlight onPress={ () => props.navigation.navigate('History') }>
+        <Text style={ style.moreStatsText }>
+          ver mais
+        </Text>
+      </TouchableHighlight>
 		</View>
 	</View>
 )
