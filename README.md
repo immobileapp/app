@@ -16,8 +16,8 @@ Certify if you have the minimum requirements to run:
 
 ### RUN
 
-- `react-native run-ios`
-- `react-native run-android`
+- `react-native run-ios`
+- `react-native run-android`
 
 
 ### May u have some problems:
