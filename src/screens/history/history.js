@@ -29,7 +29,7 @@ export default class History extends React.Component {
             renderItem={({item, index}) => (
               <HistoryItem
                 {...item}
-                active={index == 0}
+                active={!item.leftAt}
                 last={index == this.state.history.length - 1}
                 />
             )}

@@ -11,6 +11,7 @@ const widthDimensions = DimensionConversionHelper.convert('horizontal', {
 	inputHorizontalPadding: 16,
   arrowButtonPadding: 16,
   dotWidth: 16,
+  dotActiveWidth: 24,
   lineWidth: 2
 })
 
@@ -20,7 +21,8 @@ const heightDimensions = DimensionConversionHelper.convert('vertical', {
 	backIconTraceHeight: 11,
 	backIconPadding: 8,
 	headerHeight: 62,
-	homeDefaultMarginHeight: 28
+  homeDefaultMarginHeight: 28,
+  lineHeight: 1
 })
 
 const textDimensions = DimensionConversionHelper.convert('vertical', {

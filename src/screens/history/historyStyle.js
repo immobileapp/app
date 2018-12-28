@@ -7,7 +7,9 @@ const {
   largeText,
   sideMargin,
   dotWidth,
-  lineWidth
+  lineWidth,
+  lineHeight,
+  dotActiveWidth
 } = dimensions
 
 const style = StyleSheet.create({
@@ -16,19 +18,29 @@ const style = StyleSheet.create({
   },
 
   item: {
-    paddingVertical: sideMargin,
+    paddingVertical: sideMargin / 2,
     paddingRight: sideMargin,
     paddingLeft: sideMargin + dotWidth + (sideMargin / 2)
   },
 
   header: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
 
   time: {
     color: colors.lightGrey,
+    backgroundColor: colors.white,
     fontWeight: 'bold'
+  },
+
+  timeElapsed: {
+    paddingRight: sideMargin / 6
+  },
+
+  timeFromNow: {
+    paddingLeft: sideMargin / 6
   },
 
   carName: {
@@ -46,7 +58,8 @@ const style = StyleSheet.create({
   dot: {
     width: dotWidth,
     position: 'absolute',
-    left: -dotWidth - (sideMargin / 2),
+    left: -(dotWidth / 2) - (sideMargin / 2),
+    transform: [{ translateX: -(dotWidth / 2) + (lineWidth / 2) }],
     height: dotWidth,
     backgroundColor: colors.lightGrey,
     borderRadius: dotWidth / 2
@@ -61,8 +74,31 @@ const style = StyleSheet.create({
     backgroundColor: colors.lightGrey,
   },
 
+  ruler: {
+    position: 'absolute',
+    width: '100%',
+    height: lineHeight,
+    backgroundColor: colors.lightGrey
+  },
+
   dotActive: {
-    backgroundColor: colors.darkRed
+    backgroundColor: colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: colors.darkRed,
+    borderRadius: dotActiveWidth / 2,
+    left: -(sideMargin / 2) - (dotWidth / 2),
+    transform: [{ translateX: -(dotActiveWidth / 2) + (lineWidth / 2) }],
+    width: dotActiveWidth,
+    height: dotActiveWidth,
+    borderWidth: lineHeight
+  },
+
+  innerDotActive: {
+    backgroundColor: colors.darkRed,
+    borderRadius: dotWidth / 2,
+    width: dotWidth,
+    height: dotWidth
   },
 
   verticalLineActive: {
