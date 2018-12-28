@@ -1,13 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 
-import HistoryList from './historyList'
 import ParkingService from '../../services/parkingService'
+import HistoryItem from './components/historyItem'
 
 export default class History extends React.Component {
-
   state = {
-    history: { list: [] }
+    history: []
   }
 
   componentWillMount() {
@@ -22,9 +21,19 @@ export default class History extends React.Component {
 
   render() {
     return (
-      this.state.history.list.length > 0 ?
-        <HistoryList { ...this.state.history } { ...this.props } /> :
-        <View><Text>lista vazia</Text></View>
+      this.state.history.length > 0
+        ? <FlatList
+            data={this.state.history}
+            keyExtractor={(_item, index) => index.toString()}
+            renderItem={({item, index}) => (
+              <HistoryItem
+                {...item}
+                active={index == 0}
+                last={index == this.state.history.length - 1}
+                />
+            )}
+          />
+        : <View><Text>Vazio</Text></View>
     )
   }
 }

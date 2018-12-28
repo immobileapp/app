@@ -6,7 +6,7 @@ const { white, darkRed } = colors
 const generalStyle = StyleSheet.create({
 	whiteScreen: {
 		flex: 1,
-		backgroundColor: white
+    backgroundColor: white,
 	},
 	redScreen: {
 		flex: 1,

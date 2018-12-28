@@ -9,9 +9,9 @@ export default class Navigation extends React.Component {
 
 	getNavigator() {
 		return createMaterialTopTabNavigator({
+      'History': { screen: History },
       'Home': { screen: Home },
       'Parked': { screen: Parked },
-      'History': { screen: History },
 		}, {
 			swipeEnabled: true,
 			tabBarOptions: {

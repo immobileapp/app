@@ -10,9 +10,9 @@ const formatTime = milliseconds => {
       hours = parseInt(minutes / 60)
 
   if (hours >= 1)   return `${ hours }h`
-	if (minutes >= 1) return `${ minutes }m`
+  if (minutes >= 1) return `${ minutes }m`
 
-	return `${ seconds }s`
+  return `${ seconds }s`
 }
 
 export default { formatMoney, formatTime }

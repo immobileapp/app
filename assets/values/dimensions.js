@@ -1,6 +1,6 @@
 import DimensionConversionHelper from '../../src/helpers/dimensionConversionHelper'
 
-const widthDimensions = DimensionConversionHelper.convert('vertical', {
+const widthDimensions = DimensionConversionHelper.convert('horizontal', {
 	fullWidth: 414,
 	parkButtonWidth: 256,
 	changeButtonWidth: 32,
@@ -9,7 +9,9 @@ const widthDimensions = DimensionConversionHelper.convert('vertical', {
 	backIconTraceWidth: 2,
 	sideMargin: 32,
 	inputHorizontalPadding: 16,
-	arrowButtonPadding: 16
+  arrowButtonPadding: 16,
+  dotWidth: 16,
+  lineWidth: 2
 })
 
 const heightDimensions = DimensionConversionHelper.convert('vertical', {

@@ -26,7 +26,7 @@ const filterCurrentFromHistory = parkingHistory => (
 
 const watchAllParkingHistory = callback => (
   AsyncStorageHelper.subscribe('parking.onchange', list => {
-		callback({ list })
+		callback(list.sort(parking => parking.leftAt).reverse())
 	})
 )
 
