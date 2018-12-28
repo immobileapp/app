@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native'
 
 import ParkingService from '../../services/parkingService'
 import HistoryItem from './components/historyItem'
+import genericStyle from '../../genericStyle';
 
 export default class History extends React.Component {
   state = {
@@ -19,7 +20,7 @@ export default class History extends React.Component {
     this.unsubscribeFromHistory()
   }
 
-  render() {
+  getContent() {
     return (
       this.state.history.length > 0
         ? <FlatList
@@ -34,6 +35,14 @@ export default class History extends React.Component {
             )}
           />
         : <View><Text>Vazio</Text></View>
+    )
+  }
+
+  render() {
+    return (
+      <View style={genericStyle.whiteScreen}>
+        {this.getContent()}
+      </View>
     )
   }
 }

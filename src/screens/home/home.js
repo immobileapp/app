@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { View, Image, InteractionManager } from 'react-native'
 
 import RoundButton from '../../components/roundButton/roundButton'
 import CarSelect from './components/carSelect'
@@ -22,11 +22,11 @@ export default class Home extends React.Component {
 
 	componentWillMount() {
 		this.unsubscribeFromParking = ParkingService.watchCurrentParking(currentParking => {
-			this.setState({ currentParking })
+			InteractionManager.runAfterInteractions(() => this.setState({ currentParking }))
     })
 
     this.unsubscribeFromStats = StatisticsService.watchAndSummarizeParking(stats => {
-			this.setState({ stats })
+      InteractionManager.runAfterInteractions(() => this.setState({ stats }))
     })
 	}
 
