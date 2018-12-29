@@ -1,7 +1,8 @@
+import React from 'react'
 import { createAppContainer, createMaterialTopTabNavigator } from 'react-navigation'
 
-import Parked from './screens/parked/parked'
-import Screens from './screens/screens'
+import Parked from './parked/parked'
+import Screens from './screens'
 
 export default class Navigation extends React.Component {
 

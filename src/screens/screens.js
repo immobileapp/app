@@ -33,4 +33,4 @@ export default createAppContainer(createStackNavigator({
       },
     }
     /* The header config from HomeScreen is now here */
-  }));
+  }))

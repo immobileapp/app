@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import { createMaterialTopTabNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer, createMaterialTopTabNavigator } from 'react-navigation'
 
 import AppNavigation from './screens/appNavigation'
 import LoginNavigation from './screens/login/loginNavigation'
@@ -19,20 +19,41 @@ export default class Navigation extends React.Component {
 		})
 	}
 
-	getNavigator() {
-		const { user } = this.state]
-		return createMaterialTopTabNavigator({
-			'Login': { screen: LoginNavigation },
-			'App': { screen: AppNavigation }
-		}, {
-			swipeEnabled: false,
-			initialRouteName: user ? 'App' : 'Login',
-			tabBarOptions: {
-				style: {
-					display: 'none'
+	getTabs() {
+		const { user } = this.state
+		return createAppContainer(createStackNavigator({
+			Login: {
+				screen: LoginNavigation,
+				navigationOptions: {
+					header: null
+				},
+			},
+			App: {
+				screen: AppNavigation,
+				navigationOptions: {
+					header: null
 				}
 			}
-		})
+		},
+		{
+			initialRouteName: user ? 'App' : 'Login',
+		}))
+	}
+
+	getNavigator() {
+		return createAppContainer(createMaterialTopTabNavigator({
+				'Screens': {
+					screen: this.getTabs()
+				},
+				}, {
+					swipeEnabled: false,
+					tabBarOptions: {
+						style: {
+							display: 'none'
+						}
+					}
+				})
+			)
 	}
 
 	render() {

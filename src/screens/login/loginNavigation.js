@@ -1,5 +1,5 @@
 import React from 'react'
-import { createMaterialTopTabNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer, createMaterialTopTabNavigator } from 'react-navigation'
 
 import Welcome from './components/welcome'
 import PersonDocument from './components/personDocument'
@@ -7,20 +7,46 @@ import LicencePlate from './components/licencePlate'
 
 export default class LoginNavigation extends React.Component {
 
-	getNavigator() {
-		return createMaterialTopTabNavigator({
-			'Welcome': { screen: Welcome },
-			'PersonDocument': { screen: PersonDocument },
-			'LicencePlate': { screen: LicencePlate }
-		}, {
-			swipeEnabled: false,
-			initialRouteName: 'Welcome',
-			tabBarOptions: {
-				style: {
-					display: 'none'
+	getTabs() {
+		return createAppContainer(createStackNavigator({
+			Welcome: {
+				screen: Welcome,
+				navigationOptions: {
+					header: null
+				},
+			},
+			PersonDocument: {
+				screen: PersonDocument,
+				navigationOptions: {
+					header: null
+				}
+			},
+			LicencePlate: {
+				screen: LicencePlate,
+				navigationOptions: {
+					header: null
 				}
 			}
-		})
+		},
+		{
+			initialRouteName: 'Welcome'
+		}))
+	}
+
+	getNavigator() {
+		return createAppContainer(createMaterialTopTabNavigator({
+			'Screens': {
+				screen: this.getTabs()
+			},
+			}, {
+				swipeEnabled: false,
+				tabBarOptions: {
+					style: {
+						display: 'none'
+					}
+				}
+			})
+		)
 	}
 
 	render() {
