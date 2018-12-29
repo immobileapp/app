@@ -25,7 +25,9 @@ export default class PersonDocument extends React.Component {
     }
 
     forward(page) {        
-        this.props.navigation.navigate(page)
+        this.props.navigation.navigate(page, {
+            document: this.state.unmaskedValue
+        })
     }
 
     render() {

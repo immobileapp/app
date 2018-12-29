@@ -4,6 +4,8 @@ import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
 import TextInput from '../../../components/input/textInput'
 import GenericStructure from './genericStructure'
+import userService from '../../../services/userService';
+import carService from '../../../services/carService';
 
 export default class LicencePlate extends React.Component {
 
@@ -12,7 +14,9 @@ export default class LicencePlate extends React.Component {
     }
 
     forward() {
-        
+        const document = this.props.navigation.getParam('document')
+        carService.addCar(this.state.licencePlate)
+        userService.newUser(document)
     }
 
     render() {
