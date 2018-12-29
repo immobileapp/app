@@ -2,22 +2,13 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
-import Masked from '../../../components/input/masked'
+import TextInput from '../../../components/input/textInput'
 import GenericStructure from './genericStructure'
 
 export default class LicencePlate extends React.Component {
 
     state = {
-        maskedValue: '',
-        unmaskedValue: ''
-    }
-
-    handleChange(maskedvalue, unmaskedValue) {
-        console.warn(maskedvalue)
-        this.setState({ 
-            maskedValue: maskedvalue, 
-            unmaskedValue: unmaskedValue
-        })
+        licencePlate: ''
     }
 
     forward() {
@@ -32,13 +23,11 @@ export default class LicencePlate extends React.Component {
                     <Text style={ style.welcomeText } >Veículo</Text>
                     <Text style={ style.description }>Informe a placa do seu veículo</Text>
                     <View style={ style.inputWrapper}>
-                        <Masked value={ this.state.maskedValue }
+                        <TextInput value={ this.state.licencePlate }
                             placeholder="AAA-1234"
-                            mask="[AAA]=[0000]"
                             onChangeText={ 
-                                (maskedValue, unmaskedValue) => this.handleChange(maskedValue, unmaskedValue) 
+                                licencePlate => this.setState({ licencePlate }) 
                             } />
-
                     </View>
                 </View>
             </GenericStructure>

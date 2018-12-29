@@ -37,7 +37,7 @@ export default class PersonDocument extends React.Component {
                     <Text style={ style.welcomeText } >Pessoal</Text>
                     <Text style={ style.description }>Informe seu CPF para verificarmos se já temos seu cadastro</Text>
                     <View style={ style.inputWrapper}>
-                        <Masked value={ this.state.document }
+                        <Masked value={ this.state.maskedValue }
                             placeholder="000.000.000-00"
                             keyboardType="number-pad"
                             mask="[000].[000].[000]-[00]"
