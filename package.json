@@ -7,14 +7,18 @@
     "test": "jest"
   },
   "dependencies": {
+    "moment": "^2.23.0",
+    "moment-duration-format": "^2.2.2",
     "react": "16.5.0",
     "react-native": "0.57.0",
     "react-native-background-timer": "^2.0.1",
+    "react-native-gesture-handler": "^1.0.12",
+    "react-native-linear-gradient": "^2.5.3",
     "react-native-push-notification": "^3.1.1",
     "react-native-svg": "^7.0.2",
     "react-native-text-input-mask": "^0.8.0",
-    "react-navigation": "^2.14.2",
-    "validar-cpf": "^2.0.2"
+    "validar-cpf": "^2.0.2",
+    "react-navigation": "^3.0.9"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
@@ -24,5 +28,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "engines": {
+    "node": "10.13.0"
   }
 }

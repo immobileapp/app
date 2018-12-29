@@ -12,7 +12,7 @@ const CarSelect = () => (
 				Seu Carro
 			</Text>
 			<Text style={ style.carName }>
-				Ford Ka
+				VW Golf
 			</Text>
 			<TouchableOpacity style={ style.carChangeButtonWrapper }
 				onPress={ () => console.warn('mazome') }

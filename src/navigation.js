@@ -20,7 +20,7 @@ export default class Navigation extends React.Component {
 	}
 
 	getNavigator() {
-		const { user } = this.state
+		const { user } = this.state]
 		return createMaterialTopTabNavigator({
 			'Login': { screen: LoginNavigation },
 			'App': { screen: AppNavigation }

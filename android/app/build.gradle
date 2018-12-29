@@ -138,6 +138,8 @@ android {
 
 dependencies {
     compile project(':react-native-text-input-mask')
+    compile project(':react-native-gesture-handler')
+    compile project(':react-native-linear-gradient')
     compile project(':react-native-background-timer')
     compile project(':react-native-push-notification')
     compile project(':react-native-svg')

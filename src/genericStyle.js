@@ -3,10 +3,10 @@ import colors from '../assets/values/colors'
 
 const { white, darkRed } = colors
 
-const generalStyle = StyleSheet.create({
+const genericStyle = StyleSheet.create({
 	whiteScreen: {
 		flex: 1,
-		backgroundColor: white
+    backgroundColor: white,
 	},
 	redScreen: {
 		flex: 1,
@@ -38,4 +38,4 @@ const generalStyle = StyleSheet.create({
 	}
 })
 
-export default generalStyle
+export default genericStyle

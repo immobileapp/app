@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.RNTextInputMask.RNTextInputMaskPackage;
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.ocetnik.timer.BackgroundTimerPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.horcrux.svg.SvgPackage;
@@ -28,6 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNTextInputMaskPackage(),
+            new RNGestureHandlerPackage(),
+            new LinearGradientPackage(),
             new BackgroundTimerPackage(),
             new ReactNativePushNotificationPackage(),
             new SvgPackage()

@@ -1,29 +1,38 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, InteractionManager } from 'react-native'
 
 import RoundButton from '../../components/roundButton/roundButton'
 import CarSelect from './components/carSelect'
 import Greetings from './components/greetings'
 import Statistics from './components/statistics'
+import NoParkingsMessage from './components/noParkingsMessage'
 
 import style from './homeStyle'
 import genericStyle from '../../genericStyle'
 
 import ParkingService from '../../services/parkingService'
+import StatisticsService from '../../services/statisticsService'
 import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHelper'
 
 export default class Home extends React.Component {
 
-	state = {}
+	state = {
+    stats: {}
+  }
 
 	componentWillMount() {
-		this.unsubscribe = ParkingService.watchCurrentParking(currentParking => {
-			this.setState({ currentParking })
-		})
+		this.unsubscribeFromParking = ParkingService.watchCurrentParking(currentParking => {
+			InteractionManager.runAfterInteractions(() => this.setState({ currentParking }))
+    })
+
+    this.unsubscribeFromStats = StatisticsService.watchAndSummarizeParking(stats => {
+      InteractionManager.runAfterInteractions(() => this.setState({ stats }))
+    })
 	}
 
 	componentWillUnmount() {
-		this.unsubscribe()
+    this.unsubscribeFromParking()
+    this.unsubscribeFromStats()
 	}
 
 	handleClick() {
@@ -39,7 +48,15 @@ export default class Home extends React.Component {
 
 	leave() {
 		ParkingService.leave()
-	}
+  }
+
+  showStatsOrCallToPark() {
+    let hasParkedYet = this.state.stats.time == '0s'
+
+    return hasParkedYet ? <NoParkingsMessage/>
+                        : <Statistics { ...this.state.stats }
+                                      navigation={ this.props.navigation } />
+  }
 
 	render() {
 		return (
@@ -56,15 +73,15 @@ export default class Home extends React.Component {
 					<View style={ style.parkButton }>
 						<RoundButton
 							onPress={ () => this.handleClick() }
-							label={ 
-								this.state.currentParking 
-									? 'Deixar Vaga' 
-									: 'Estacionar' 
+							label={
+								this.state.currentParking
+									? 'Deixar Vaga'
+									: 'Estacionar'
 								}
 						/>
 					</View>
 					<Greetings/>
-					<Statistics/>
+					{ this.showStatsOrCallToPark() }
 				</View>
 			</View>
 		)
