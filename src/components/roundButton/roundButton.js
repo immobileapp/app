@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, LayoutAnimation } from 'react-native'
 import style from './roundButtonStyle'
 import genericStyle from '../../genericStyle'
 
-export default class RoundButton extends React.Component {
+class RoundButton extends React.Component {
 
 	componentWillReceiveProps() {
 		LayoutAnimation.configureNext(
@@ -14,7 +14,7 @@ export default class RoundButton extends React.Component {
 
 	render() {
 		return (
-			<TouchableOpacity style={ this.props.style || {} } 
+			<TouchableOpacity style={ this.props.style } 
 				onPress={ this.props.onPress }>
 				<View style={[ style.button,
 					this.props.color == 'white'
@@ -35,3 +35,9 @@ export default class RoundButton extends React.Component {
 		)
 	}
 }
+
+RoundButton.defaultProps = {
+	style: {}
+}
+
+export default RoundButton
