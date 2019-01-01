@@ -14,7 +14,7 @@ class RoundButton extends React.Component {
 
 	render() {
 		return (
-			<TouchableOpacity style={ this.props.style } 
+			<TouchableOpacity style={ this.props.style }
 				onPress={ this.props.onPress }>
 				<View style={[ style.button,
 					this.props.color == 'white'
@@ -22,7 +22,7 @@ class RoundButton extends React.Component {
 						: style.redButton
 				]}>
 					<View style={ genericStyle.centerContent }>
-						<Text style={[ style.text, 
+						<Text style={[ style.text,
 							this.props.color == 'white'
 								? style.redText
 								: style.whiteText

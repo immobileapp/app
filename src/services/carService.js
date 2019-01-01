@@ -2,7 +2,7 @@ import AsyncStorageHelper from '../helpers/asyncStorageHelper/asyncStorageHelper
 
 const addCar = car => {
     car.model = 'VW Golf'
-    AsyncStorageHelper.save('veichles', car)
+    AsyncStorageHelper.save('vehicles', car)
 }
 
 export default { addCar }
