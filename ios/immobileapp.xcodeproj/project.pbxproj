@@ -181,6 +181,13 @@
 			remoteGlobalIDString = 641926921ECB4257009CF731;
 			remoteInfo = "RNBackgroundTimer-tvOS";
 		};
+		15EA9BC421D7BAA30079E0EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2256F716855842349992B6A1 /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNGestureHandler;
+		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -657,6 +664,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		15EA9BC121D7BAA30079E0EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15EA9BC521D7BAA30079E0EA /* libRNGestureHandler.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +911,7 @@
 				},
 				{
 					ProductGroup = 153EECB621DA536D009AD296 /* Products */;
+					ProductGroup = 15EA9BC121D7BAA30079E0EA /* Products */;
 					ProjectRef = 2256F716855842349992B6A1 /* RNGestureHandler.xcodeproj */;
 				},
 				{
@@ -1054,6 +1070,13 @@
 			fileType = archive.ar;
 			path = libRNBackgroundTimer.a;
 			remoteRef = 15A639C2216C5345002BD058 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		15EA9BC521D7BAA30079E0EA /* libRNGestureHandler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNGestureHandler.a;
+			remoteRef = 15EA9BC421D7BAA30079E0EA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
