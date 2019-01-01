@@ -27,11 +27,13 @@ export default class LicencePlate extends React.Component {
                     <Text style={ style.welcomeText } >Veículo</Text>
                     <Text style={ style.description }>Informe a placa do seu veículo</Text>
                     <View style={ style.inputWrapper}>
-                        <TextInput value={ this.state.licencePlate }
-                            placeholder="AAA-1234"
-                            onChangeText={ 
-                                licencePlate => this.setState({ licencePlate }) 
-                            } />
+                      <TextInput value={ this.state.licencePlate }
+                        placeholder="AAA-1234"
+                        autoCorrect={false}
+                        autoCapitalize="characters"
+                        onChangeText={
+                          licencePlate => this.setState({ licencePlate })
+                        } />
                     </View>
                 </View>
             </GenericStructure>
