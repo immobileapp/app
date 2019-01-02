@@ -1,28 +1,45 @@
 import React from 'react'
 import { View, Platform, UIManager } from 'react-native'
 import Navigation from './src/navigation'
+import LoginNavigation from './src/screens/login/loginNavigation'
 import moment from 'moment'
 import 'moment/locale/pt-br'
-
-import NotificationService from './src/services/notificationService'
+import userService from './src/services/userService'
 
 export default class App extends React.Component {
 
-    constructor() {
-        super()
-        moment.locale('pt-br');
+  state = {
+    user: null,
+    loading: true
+  }
 
-        Platform.OS === 'android' &&
-            UIManager.setLayoutAnimationEnabledExperimental(true)
+  constructor() {
+    super()
+    moment.locale('pt-br');
 
-        // NotificationService.initialize()
-    }
+    Platform.OS === 'android' &&
+        UIManager.setLayoutAnimationEnabledExperimental(true)
 
-    render() {
-        return (
-            <View style={{ flex: 1 }}>
-                <Navigation />
-            </View>
-        )
-    }
+      // NotificationService.initialize()
+  }
+
+  componentWillMount() {
+    userService.watchCurrentUser(user => {
+      this.setState({ user, loading: false })
+    })
+  }
+
+  renderApp() {
+    return this.state.user ? <Navigation /> : <LoginNavigation />
+  }
+
+  render() {
+    const { loading } = this.state
+
+    return (
+      <View style={{ flex: 1 }}>
+        { !loading && this.renderApp() }
+      </View>
+    )
+  }
 }

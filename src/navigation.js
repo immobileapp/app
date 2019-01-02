@@ -4,8 +4,6 @@ import { createAppContainer, createMaterialTopTabNavigator } from 'react-navigat
 import Parked from './screens/parked/parked'
 import Screens from './screens/screens'
 
-import colors from '../assets/values/colors'
-
 export default class Navigation extends React.Component {
 
   getNavigator() {

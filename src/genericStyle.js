@@ -23,6 +23,10 @@ const genericStyle = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
+  justifyCenter: {
+    flex: 1,
+    justifyContent: 'center'
+  },
 	darkOverlay: {
 		position: 'absolute',
 		top: 0,
