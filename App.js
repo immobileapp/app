@@ -8,37 +8,38 @@ import userService from './src/services/userService'
 
 export default class App extends React.Component {
 
-    state = {
-		user: null,
-		loading: true
-	}
+  state = {
+    user: null,
+    loading: true
+  }
 
-    constructor() {
-        super()
-        moment.locale('pt-br');
+  constructor() {
+    super()
+    moment.locale('pt-br');
 
-        Platform.OS === 'android' &&
-            UIManager.setLayoutAnimationEnabledExperimental(true)
+    Platform.OS === 'android' &&
+        UIManager.setLayoutAnimationEnabledExperimental(true)
 
-        // NotificationService.initialize()
-    }
+      // NotificationService.initialize()
+  }
 
-	componentWillMount() {
-		userService.watchCurrentUser(user => {
-			this.setState({ user, loading: false })
-		})
-    }
-    
-    renderApp() {
-        return this.state.user ? <Navigation /> : <LoginNavigation />
-    }
+  componentWillMount() {
+    userService.watchCurrentUser(user => {
+      this.setState({ user, loading: false })
+    })
+  }
 
-    render() {
-        const { loading } = this.state
-        return (
-            <View style={{ flex: 1 }}>
-                { !loading && this.renderApp() }
-            </View>
-        )
-    }
+  renderApp() {
+    return this.state.user ? <Navigation /> : <LoginNavigation />
+  }
+
+  render() {
+    const { loading } = this.state
+
+    return (
+      <View style={{ flex: 1 }}>
+        { !loading && this.renderApp() }
+      </View>
+    )
+  }
 }

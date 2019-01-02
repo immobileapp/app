@@ -1,7 +1,7 @@
 import BasicOperations from './basicOperations'
 
-const find = (key, query) => (
-	BasicOperations.get(key).then(result => result)
+const find = (key, _query) => (
+  BasicOperations.get(key).then(result => result)
 )
 
 const findById = (key, id) => (
@@ -11,7 +11,7 @@ const findById = (key, id) => (
 )
 
 const save = (key, value) => (
-	BasicOperations.updateData(key, prevValue => 
+	BasicOperations.updateData(key, prevValue =>
 		[...prevValue, { ...value, ...{ id: BasicOperations.generateUuid() }}]
 	)
 )
@@ -19,8 +19,8 @@ const save = (key, value) => (
 const update = (key, query, value) => (
 	BasicOperations.updateData(key, prevValue => (
 		prevValue.map(item => (
-			item[formatQuery(query).key] === formatQuery(query).value 
-				? { ...item, ...value } 
+			item[formatQuery(query).key] === formatQuery(query).value
+				? { ...item, ...value }
 				: item
 		))
 	))
