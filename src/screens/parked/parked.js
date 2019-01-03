@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import colors from '../../../assets/values/colors'
 
 import genericStyle from '../../genericStyle'
 import style from './parkedStyle'
@@ -7,6 +8,7 @@ import style from './parkedStyle'
 import Timer from './components/timer'
 import RoundButton from '../../components/roundButton/roundButton'
 import BackIcon from '../../components/icons/backIcon'
+import StatusBarCompensator from '../../components/statusBarCompensator/statusBarCompensator'
 
 import ParkingService from '../../services/parkingService'
 import TimerService from '../../services/timerService'
@@ -50,6 +52,9 @@ export default class Parked extends React.Component {
 	render() {
 		return (
 			<View style={ genericStyle.redScreen }>
+				<StatusBarCompensator
+					backgroundColor={ colors.darkRed }
+				/>
 				<TouchableOpacity style={ style.backButton }
 					onPress={ () => this.props.navigation.navigate('Home') }
 				>

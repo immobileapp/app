@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Platform, UIManager } from 'react-native'
+import { View, Platform, UIManager, StatusBar } from 'react-native'
 import Navigation from './src/navigation'
 import LoginNavigation from './src/screens/login/loginNavigation'
 import moment from 'moment'
@@ -30,7 +30,8 @@ export default class App extends React.Component {
   }
 
   renderApp() {
-    return this.state.user ? <Navigation /> : <LoginNavigation />
+    // return this.state.user ? <Navigation /> : <LoginNavigation />
+    return <Navigation/>
   }
 
   render() {
@@ -38,6 +39,10 @@ export default class App extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar
+          translucent={ true }
+          backgroundColor="transparent"
+        />
         { !loading && this.renderApp() }
       </View>
     )
