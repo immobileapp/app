@@ -50,7 +50,7 @@ export default class Parked extends React.Component {
 
 	render() {
 		return (
-			<View style={{ ...genericStyle.redScreen, ...genericStyle.statusBarCompensation }}>
+			<View style={[ genericStyle.redScreen, genericStyle.statusBarCompensation ]}>
 				<TouchableOpacity style={ style.backButton }
 					onPress={ () => this.props.navigation.navigate('Home') }
 				>

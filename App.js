@@ -30,8 +30,8 @@ export default class App extends React.Component {
   }
 
   renderApp() {
-    // return this.state.user ? <Navigation /> : <LoginNavigation />
-    return <Navigation/>
+    return this.state.user ? <Navigation /> : <LoginNavigation />
+    // return <Navigation/>
   }
 
   render() {
