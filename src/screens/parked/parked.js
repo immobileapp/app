@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
+import colors from '../../../assets/values/colors'
 
 import genericStyle from '../../genericStyle'
 import style from './parkedStyle'
@@ -49,7 +50,7 @@ export default class Parked extends React.Component {
 
 	render() {
 		return (
-			<View style={ genericStyle.redScreen }>
+			<View style={[ genericStyle.redScreen, genericStyle.statusBarCompensation ]}>
 				<TouchableOpacity style={ style.backButton }
 					onPress={ () => this.props.navigation.navigate('Home') }
 				>

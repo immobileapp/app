@@ -17,8 +17,8 @@ import AsyncStorageHelper from '../../helpers/asyncStorageHelper/asyncStorageHel
 export default class Home extends React.Component {
 
 	state = {
-    stats: {}
-  }
+	  stats: {}
+	}
 
 	componentWillMount() {
 		this.unsubscribeFromParking = ParkingService.watchCurrentParking(currentParking => {
@@ -53,9 +53,12 @@ export default class Home extends React.Component {
   showStatsOrCallToPark() {
     let hasParkedYet = this.state.stats.time == '0s'
 
-    return hasParkedYet ? <NoParkingsMessage/>
-                        : <Statistics { ...this.state.stats }
-                                      navigation={ this.props.navigation } />
+    return hasParkedYet 
+    	? <NoParkingsMessage/>
+			: <Statistics 
+				{ ...this.state.stats }
+				navigation={ this.props.navigation }
+			/>
   }
 
 	render() {

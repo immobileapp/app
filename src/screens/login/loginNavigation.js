@@ -11,28 +11,22 @@ import LicencePlate from './components/licencePlate'
 
 export default class LoginNavigation extends React.Component {
   getTabs() {
-    let baseNavigation = {
-      navigationOptions: {
-        header: null
-      },
-    }
-
     let stackNavigator = createStackNavigator({
       Welcome: {
-        screen: Welcome,
-        ...baseNavigation
+        screen: Welcome
       },
       PersonDocument: {
-        screen: PersonDocument,
-        ...baseNavigation
+        screen: PersonDocument
       },
       LicencePlate: {
-        screen: LicencePlate,
-        ...baseNavigation
+        screen: LicencePlate
       }
     },
     {
-      initialRouteName: 'Welcome'
+      initialRouteName: 'Welcome',
+      defaultNavigationOptions: {
+        header: null
+      }
     })
 
     return createAppContainer(stackNavigator)

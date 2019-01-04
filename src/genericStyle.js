@@ -1,7 +1,9 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, StatusBar, Platform } from 'react-native'
+import { Header } from 'react-navigation'
 import colors from '../assets/values/colors'
 
 const { white, darkRed } = colors
+const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 20
 
 const genericStyle = StyleSheet.create({
 	whiteScreen: {
@@ -35,6 +37,13 @@ const genericStyle = StyleSheet.create({
 		bottom: 0,
 		backgroundColor: 'rgba(0,0,0,0.35)',
 		zIndex: 1
+	},
+	statusBarCompensation: {
+		paddingTop: statusBarHeight,
+		height: Header.HEIGHT + statusBarHeight
+	},
+	header: {
+		backgroundColor: darkRed
 	}
 })
 

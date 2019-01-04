@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Platform, UIManager } from 'react-native'
+import { View, Platform, UIManager, StatusBar } from 'react-native'
 import Navigation from './src/navigation'
 import LoginNavigation from './src/screens/login/loginNavigation'
 import moment from 'moment'
@@ -38,6 +38,11 @@ export default class App extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar
+          translucent={ true }
+          backgroundColor="transparent"
+          barStyle="light-content"
+        />
         { !loading && this.renderApp() }
       </View>
     )

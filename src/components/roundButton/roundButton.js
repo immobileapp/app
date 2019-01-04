@@ -13,8 +13,8 @@ class RoundButton extends React.Component {
   }
 
   render() {
-    let buttonColor =
-      this.props.color == 'white' ? style.whiteButton : style.redButton
+    let buttonColor = this.props.color === 'white' ? style.whiteButton : style.redButton,
+        textColor = this.props.color === 'white' ? style.redText : style.whiteText
 
     return (
       <TouchableOpacity style={ this.props.style }
@@ -22,7 +22,7 @@ class RoundButton extends React.Component {
 
         <View style={[ style.button, buttonColor ]}>
           <View style={ genericStyle.centerContent }>
-            <Text style={[ style.text, buttonColor ]}>
+            <Text style={[ style.text, textColor ]}>
               { this.props.label.toUpperCase() }
             </Text>
           </View>
