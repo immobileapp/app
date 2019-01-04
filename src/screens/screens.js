@@ -1,11 +1,9 @@
 import React from 'react'
+import { createStackNavigator, createAppContainer } from 'react-navigation'
+import genericStyle from '../genericStyle'
 
 import Home from './home/home'
 import History from './history/history'
-
-import { createStackNavigator, createAppContainer } from 'react-navigation'
-
-import colors from '../../assets/values/colors'
 
 export default createAppContainer(createStackNavigator({
   Home: {
@@ -24,9 +22,7 @@ export default createAppContainer(createStackNavigator({
 {
   initialRouteName: 'Home',
   defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: colors.darkRed,
-    },
+    headerStyle: { ...genericStyle.header, ...genericStyle.statusBarCompensation },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',

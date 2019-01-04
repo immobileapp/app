@@ -8,7 +8,6 @@ import style from './parkedStyle'
 import Timer from './components/timer'
 import RoundButton from '../../components/roundButton/roundButton'
 import BackIcon from '../../components/icons/backIcon'
-import StatusBarCompensator from '../../components/statusBarCompensator/statusBarCompensator'
 
 import ParkingService from '../../services/parkingService'
 import TimerService from '../../services/timerService'
@@ -51,10 +50,7 @@ export default class Parked extends React.Component {
 
 	render() {
 		return (
-			<View style={ genericStyle.redScreen }>
-				<StatusBarCompensator
-					backgroundColor={ colors.darkRed }
-				/>
+			<View style={{ ...genericStyle.redScreen, ...genericStyle.statusBarCompensation }}>
 				<TouchableOpacity style={ style.backButton }
 					onPress={ () => this.props.navigation.navigate('Home') }
 				>
