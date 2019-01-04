@@ -31,7 +31,6 @@ export default class App extends React.Component {
 
   renderApp() {
     return this.state.user ? <Navigation /> : <LoginNavigation />
-    // return <Navigation/>
   }
 
   render() {
@@ -42,6 +41,7 @@ export default class App extends React.Component {
         <StatusBar
           translucent={ true }
           backgroundColor="transparent"
+          barStyle="light-content"
         />
         { !loading && this.renderApp() }
       </View>
