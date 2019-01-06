@@ -8,7 +8,8 @@ const {
   extraLargeText,
   sideMargin,
   mediumText,
-  normalText
+  normalText,
+  smallText
 } = dimensions
 
 const commonText = {
@@ -25,11 +26,11 @@ const style = StyleSheet.create({
   },
   description: {
     ...commonText,
-    fontSize: mediumText
+    fontSize: normalText
   },
   invitationText: {
     ...commonText,
-    fontSize: largeText,
+    fontSize: mediumText,
     fontWeight: 'bold'
   },
   forwardButton: {
@@ -40,7 +41,7 @@ const style = StyleSheet.create({
   },
   error: {
     color: colors.white,
-    fontSize: normalText
+    fontSize: smallText
   }
 })
 

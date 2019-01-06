@@ -8,6 +8,7 @@ import {
 import Welcome from './components/welcome'
 import PersonDocument from './components/personDocument'
 import LicencePlate from './components/licencePlate'
+import ConfimationCode from './components/confirmationCode'
 
 export default class LoginNavigation extends React.Component {
   getTabs() {
@@ -20,6 +21,9 @@ export default class LoginNavigation extends React.Component {
       },
       LicencePlate: {
         screen: LicencePlate
+      },
+      ConfimationCode: {
+        screen: ConfimationCode
       }
     },
     {

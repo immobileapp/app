@@ -26,7 +26,8 @@ const heightDimensions = DimensionConversionHelper.convert('vertical', {
 })
 
 const textDimensions = DimensionConversionHelper.convert('vertical', {
-	normalText: 16,
+  smallText: 12,
+  normalText: 16,
 	mediumText: 21,
 	largeText: 26,
 	extraLargeText: 68,

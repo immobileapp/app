@@ -24,14 +24,12 @@ export default class PersonDocument extends React.Component {
     if (!this.validate()) return
     userService.checkForDocument(this.state.unmaskedValue).then(data => {
       this.handleForward(data.exists)
-    }).catch(data => {
-      this.handleForward(data.exists)
     })
   }
 
   handleForward(documentExists) {
     if (!documentExists) return this.forward('LicencePlate')
-    console.warn('exists!')
+    this.forward('ConfimationCode')
   }
 
   forward(page) {
