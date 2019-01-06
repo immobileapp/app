@@ -1,4 +1,5 @@
 import AsyncStorageHelper from '../helpers/asyncStorageHelper/asyncStorageHelper'
+import httpHelper from '../helpers/httpHelper'
 
 const watchCurrentUser = callback => (
   AsyncStorageHelper.subscribe('user.onchange', currentUser => {
@@ -14,4 +15,13 @@ const saveUser = user => {
   AsyncStorageHelper.save('user', user)
 }
 
-export default { watchCurrentUser, saveUser, newUser }
+const checkForDocument = async document => {
+  return await httpHelper.get(`/v1/utils/documents/exists?document=${document}`)
+}
+
+export default {
+  watchCurrentUser,
+  saveUser,
+  newUser,
+  checkForDocument
+}

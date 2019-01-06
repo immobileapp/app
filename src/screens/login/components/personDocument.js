@@ -5,6 +5,7 @@ import genericStyle from '../../../genericStyle'
 import Masked from '../../../components/input/masked'
 import GenericStructure from './genericStructure'
 import validateCpf from 'validar-cpf'
+import userService from '../../../services/userService'
 
 export default class PersonDocument extends React.Component {
   state = {
@@ -20,7 +21,17 @@ export default class PersonDocument extends React.Component {
   }
 
   handleClick() {
-    this.validate() && this.forward('LicencePlate')
+    if (!this.validate()) return
+    userService.checkForDocument(this.state.unmaskedValue).then(data => {
+      this.handleForward(data.exists)
+    }).catch(data => {
+      this.handleForward(data.exists)
+    })
+  }
+
+  handleForward(documentExists) {
+    if (!documentExists) return this.forward('LicencePlate')
+    console.warn('exists!')
   }
 
   forward(page) {
@@ -45,7 +56,7 @@ export default class PersonDocument extends React.Component {
               onChangeText={
                 (maskedValue, unmaskedValue) => this.setState({ maskedValue, unmaskedValue })
               } />
-            { !this.state.valid && <Text style={ style.error }>CPF inválido</Text> }
+            { !this.state.valid && <Text style={ style.dataor }>CPF inválido</Text> }
           </View>
         </View>
       </GenericStructure>
