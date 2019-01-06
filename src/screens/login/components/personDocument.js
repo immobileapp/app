@@ -22,7 +22,7 @@ export default class PersonDocument extends React.Component {
 
   handleClick() {
     if (!this.validate()) return
-    userService.checkForDocument(this.state.unmaskedValue).then(data => {
+    userService.checkForDocument(this.state.maskedValue).then(data => {
       this.handleForward(data.exists)
     })
   }

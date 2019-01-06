@@ -16,7 +16,7 @@ const saveUser = user => {
 }
 
 const checkForDocument = async document => {
-  return await httpHelper.get(`/v1/utils/documents/exists?document=${document}`)
+  return await httpHelper.get(`/utils/documents/exists?document=${document}`)
 }
 
 export default {

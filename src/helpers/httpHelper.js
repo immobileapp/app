@@ -1,4 +1,4 @@
-const base = 'https://api.immobileapp.com'
+const base = 'https://api.immobileapp.com/v1'
 let token = ''
 
 const makeRequest = (url, settings) => (
