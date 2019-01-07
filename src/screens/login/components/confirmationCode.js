@@ -38,9 +38,7 @@ export default class ConfimationCode extends React.Component {
           <Text style={ style.invitationText }>
             Parece que já nos conhecemos antes,
           </Text>
-          {
-            getMessage()
-          }
+          { getMessage() }
           <View style={ style.inputWrapper}>
             <TextInput value={ this.state.code }
               placeholder="Informar código"
