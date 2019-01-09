@@ -9,11 +9,7 @@ let CURRENT_YEAR = new Date().getYear()
 
 const watchAndSummarizeParking = callback => (
 	AsyncStorageHelper.subscribe('parking.onchange', parkingHistory => {
-    const totalTime = parkingHistory
-      .filter(filterByCurrentMonth)
-      .filter(parking => parking.leftAt != null)
-      .reduce((acc, cur) => acc + (cur.leftAt - cur.stoppedAt), 0)
-
+    const totalTime = calculateTotalTime(parkingHistory || [])
     const totalMoney = calculateTotalPrice(totalTime)
 
     callback({
@@ -21,6 +17,13 @@ const watchAndSummarizeParking = callback => (
       money: FormatHelper.formatMoney(totalMoney)
     })
 	})
+)
+
+const calculateTotalTime = parkingHistory => (
+  parkingHistory
+    .filter(filterByCurrentMonth)
+    .filter(parking => parking.leftAt != null)
+    .reduce((acc, cur) => acc + (cur.leftAt - cur.stoppedAt), 0)
 )
 
 const filterByCurrentMonth = parking => {

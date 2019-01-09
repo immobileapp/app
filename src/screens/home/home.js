@@ -51,11 +51,14 @@ export default class Home extends React.Component {
   }
 
   showStatsOrCallToPark() {
-    let hasParkedYet = this.state.stats.time == '0s'
+    const { time } = this.state.stats
+    if (!time) return null
 
-    return hasParkedYet 
+    let hasParkedYet = time == '0s'
+
+    return hasParkedYet
     	? <NoParkingsMessage/>
-			: <Statistics 
+			: <Statistics
 				{ ...this.state.stats }
 				navigation={ this.props.navigation }
 			/>
