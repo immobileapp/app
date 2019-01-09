@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "930232611518",
+    "firebase_url": "https://immobile-a457f.firebaseio.com",
+    "project_id": "immobile-a457f",
+    "storage_bucket": "immobile-a457f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930232611518:android:ff2ebbba55f8a044",
+        "android_client_info": {
+          "package_name": "com.immobileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930232611518-uivf22i18l98aoocfbckricrs3seh5mt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4Q4xq20akinLnKwjz2Aef9ffJyE_RVRw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
