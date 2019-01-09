@@ -5,8 +5,10 @@ import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
 import TextInput from '../../../components/input/textInput'
 import GenericStructure from './genericStructure'
-import userService from '../../../services/userService';
-import carService from '../../../services/carService';
+import userService from '../../../services/userService'
+import carService from '../../../services/carService'
+
+import MaskingHelper from '../../../helpers/maskingHelper'
 
 export default class LicencePlate extends React.Component {
   state = {
@@ -30,10 +32,10 @@ export default class LicencePlate extends React.Component {
           <View style={ style.inputWrapper}>
             <TextInput value={ this.state.licencePlate }
               placeholder="AAA-1234"
-              autoCorrect={false}
+              autoCorrect={ false }
               autoCapitalize="characters"
               onChangeText={
-                licencePlate => this.setState({ licencePlate })
+                licencePlate => this.setState({ licencePlate: MaskingHelper.mask(licencePlate, 'AAA-1234') })
               } />
           </View>
         </View>
