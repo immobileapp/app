@@ -17,7 +17,7 @@ export default class LicencePlate extends React.Component {
 
   forward() {
     const document = this.props.navigation.getParam('document')
-    
+
     CarService.addCar(this.state.licencePlate)
     UserService.newUser(document)
   }
@@ -39,7 +39,7 @@ export default class LicencePlate extends React.Component {
 
           <View style={ style.inputWrapper}>
             <TextInput value={ this.state.licencePlate }
-              placeholder="AAA-1234"
+              placeholder="AAA-1234 ou AAA1A23"
               autoCorrect={ false }
               autoCapitalize="characters"
               onChangeText={ licencePlate => this.handleChange(licencePlate) } />
