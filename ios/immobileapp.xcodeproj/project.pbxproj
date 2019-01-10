@@ -23,7 +23,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		153EECCD21DA5E73009AD296 /* libRNTextInputMask.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 153EECC921DA54FA009AD296 /* libRNTextInputMask.a */; };
 		157069F82159E9BB00BB1657 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 157069F52159E97700BB1657 /* libRCTPushNotification.a */; };
 		392826A9CF0843148B974191 /* libRNBackgroundTimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 700D49D52BAD4FD99B33405F /* libRNBackgroundTimer.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -110,13 +109,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 64AA15081EF7F30100718508;
 			remoteInfo = "BVLinearGradient-tvOS";
-		};
-		153EECB921DA536D009AD296 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2256F716855842349992B6A1 /* RNGestureHandler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNGestureHandler;
 		};
 		153EECBF21DA536D009AD296 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -457,7 +449,6 @@
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
-				153EECCD21DA5E73009AD296 /* libRNTextInputMask.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
@@ -594,14 +585,6 @@
 			children = (
 				152AC23521D6C7F70095C7BF /* libBVLinearGradient.a */,
 				152AC23721D6C7F70095C7BF /* libBVLinearGradient.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		153EECB621DA536D009AD296 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				153EECBA21DA536D009AD296 /* libRNGestureHandler.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -910,7 +893,6 @@
 					ProjectRef = 328C1EA24F0842F6BDFD34D9 /* RNBackgroundTimer.xcodeproj */;
 				},
 				{
-					ProductGroup = 153EECB621DA536D009AD296 /* Products */;
 					ProductGroup = 15EA9BC121D7BAA30079E0EA /* Products */;
 					ProjectRef = 2256F716855842349992B6A1 /* RNGestureHandler.xcodeproj */;
 				},
@@ -1000,13 +982,6 @@
 			fileType = archive.ar;
 			path = libBVLinearGradient.a;
 			remoteRef = 152AC23621D6C7F70095C7BF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		153EECBA21DA536D009AD296 /* libRNGestureHandler.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNGestureHandler.a;
-			remoteRef = 153EECB921DA536D009AD296 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		153EECC021DA536D009AD296 /* InputMask.framework */ = {
