@@ -1,7 +1,7 @@
 import BasicOperations from './basicOperations'
 
 const find = (key, _query) => (
-  BasicOperations.get(key).then(result => result || [])
+  BasicOperations.get(key).then(result => result)
 )
 
 const findById = (key, id) => (

@@ -21,7 +21,8 @@ const getCurrentParking = () => (
 )
 
 const filterCurrentFromHistory = parkingHistory => {
-  if (!parkingHistory) return []
+  if (!parkingHistory) return null
+
   return parkingHistory.filter(parking => parking.leftAt === undefined)[0]
 }
 
