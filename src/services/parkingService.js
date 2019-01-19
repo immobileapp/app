@@ -20,9 +20,11 @@ const getCurrentParking = () => (
 		.then(parkingHistory => filterCurrentFromHistory(parkingHistory))
 )
 
-const filterCurrentFromHistory = parkingHistory => (
-  parkingHistory.filter(parking => parking.leftAt === undefined)[0]
-)
+const filterCurrentFromHistory = parkingHistory => {
+  if (!parkingHistory) return null
+
+  return parkingHistory.filter(parking => parking.leftAt === undefined)[0]
+}
 
 const watchAllParkingHistory = callback => (
   AsyncStorageHelper.subscribe('parking.onchange', list => {
