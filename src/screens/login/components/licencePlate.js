@@ -5,8 +5,10 @@ import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
 import TextInput from '../../../components/input/textInput'
 import GenericStructure from './genericStructure'
-import userService from '../../../services/userService';
-import carService from '../../../services/carService';
+import UserService from '../../../services/userService'
+import CarService from '../../../services/carService'
+
+import MaskingHelper from '../../../helpers/maskingHelper'
 
 export default class LicencePlate extends React.Component {
   state = {
@@ -15,8 +17,16 @@ export default class LicencePlate extends React.Component {
 
   forward() {
     const document = this.props.navigation.getParam('document')
-    carService.addCar(this.state.licencePlate)
-    userService.newUser(document)
+
+    CarService.addCar(this.state.licencePlate)
+    UserService.newUser(document)
+  }
+
+  handleChange(licencePlate) {
+    let differentChar = MaskingHelper.unmask(licencePlate).charAt(4),
+        maskPattern = (differentChar && isNaN(differentChar)) ? 'AAA1B23' : 'AAA-1234'
+
+    this.setState({ licencePlate: MaskingHelper.mask(licencePlate, maskPattern) })
   }
 
   render() {
@@ -29,12 +39,10 @@ export default class LicencePlate extends React.Component {
 
           <View style={ style.inputWrapper}>
             <TextInput value={ this.state.licencePlate }
-              placeholder="AAA-1234"
-              autoCorrect={false}
+              placeholder="AAA-1234 ou AAA1A23"
+              autoCorrect={ false }
               autoCapitalize="characters"
-              onChangeText={
-                licencePlate => this.setState({ licencePlate })
-              } />
+              onChangeText={ licencePlate => this.handleChange(licencePlate) } />
           </View>
         </View>
       </GenericStructure>

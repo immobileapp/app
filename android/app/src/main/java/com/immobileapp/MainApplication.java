@@ -3,7 +3,7 @@ package com.immobileapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.RNTextInputMask.RNTextInputMaskPackage;
+import io.invertase.firebase.RNFirebasePackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.ocetnik.timer.BackgroundTimerPackage;
@@ -29,7 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNTextInputMaskPackage(),
+            new RNFirebasePackage(),
             new RNGestureHandlerPackage(),
             new LinearGradientPackage(),
             new BackgroundTimerPackage(),

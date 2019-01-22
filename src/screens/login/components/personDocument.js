@@ -1,31 +1,33 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
-import Masked from '../../../components/input/masked'
+
 import GenericStructure from './genericStructure'
+
 import validateCpf from 'validar-cpf'
+import MaskingHelper from '../../../helpers/maskingHelper'
 
 export default class PersonDocument extends React.Component {
   state = {
-    maskedValue: '',
-    unmaskedValue: '',
+    cpf: '',
     valid: true
   }
 
   validate() {
-    const valid = validateCpf(this.state.unmaskedValue)
+    const valid = validateCpf(MaskingHelper.unmask(this.state.cpf))
     this.setState({ valid })
+
     return valid
   }
 
   handleClick() {
-    this.validate() && this.forward('LicencePlate')
+    this.validate() && this.goForward()
   }
 
-  forward(page) {
-    this.props.navigation.navigate(page, {
-      document: this.state.unmaskedValue
+  goForward(page) {
+    this.props.navigation.navigate('LicencePlate', {
+      document: MaskingHelper.unmask(this.state.cpf)
     })
   }
 
@@ -38,12 +40,12 @@ export default class PersonDocument extends React.Component {
           <Text style={ style.welcomeText }>Pessoal</Text>
           <Text style={ style.description }>Informe seu CPF para verificarmos se já temos seu cadastro</Text>
           <View style={ style.inputWrapper}>
-            <Masked value={ this.state.maskedValue }
+            <TextInput 
+              value={ this.state.cpf }
               placeholder="000.000.000-00"
               keyboardType="number-pad"
-              mask="[000].[000].[000]-[00]"
               onChangeText={
-                (maskedValue, unmaskedValue) => this.setState({ maskedValue, unmaskedValue })
+                cpf => this.setState({ cpf: MaskingHelper.mask(cpf, '000.000.000-00') })
               } />
             { !this.state.valid && <Text style={ style.error }>CPF inválido</Text> }
           </View>
