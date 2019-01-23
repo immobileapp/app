@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { View, Text } from 'react-native'
+import TextInput from '../../../components/input/textInput'
 import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
 import phoneNumberValidator from '../../../helpers/phoneNumberValidator'
