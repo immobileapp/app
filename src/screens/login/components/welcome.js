@@ -6,7 +6,7 @@ import GenericStructure from './genericStructure'
 
 export default class Welcome extends React.Component {
   forward() {
-    this.props.navigation.navigate('PersonDocument')
+    this.props.navigation.navigate('PersonPhone')
   }
 
   render() {
