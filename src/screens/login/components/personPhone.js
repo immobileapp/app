@@ -27,7 +27,7 @@ export default class PersonPhone extends React.Component {
 
   goForward(page) {
     this.props.navigation.navigate('ConfimationCode', {
-      document: MaskingHelper.unmask(this.state.number)
+      phoneNumber: MaskingHelper.unmask(this.state.number)
     })
   }
 

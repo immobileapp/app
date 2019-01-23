@@ -5,7 +5,7 @@ import style from '../loginStyle'
 import genericStyle from '../../../genericStyle'
 import TextInput from '../../../components/input/textInput'
 import GenericStructure from './genericStructure'
-import userService from '../../../services/userService'
+import firebase from 'react-native-firebase'
 
 const getMessage = () => {
   const message = Platform.OS === 'android' ?
@@ -23,6 +23,29 @@ export default class ConfimationCode extends React.Component {
   state = {
     code: '',
     valid: true
+  }
+
+  componentWillMount() {
+    const phoneNumber = this.props.navigation.getParam('phoneNumber')
+    firebase.auth()
+      .verifyPhoneNumber(`+55${phoneNumber}`)
+      .on('state_changed', phoneAuthSnapshot => {
+        switch (phoneAuthSnapshot.state) {
+          case firebase.auth.PhoneAuthState.CODE_SENT:
+            console.warn('code sent')
+            break
+          case firebase.auth.PhoneAuthState.AUTO_VERIFIED:
+            console.warn('autoverified')
+            console.warn(phoneAuthSnapshot)
+            break
+
+        }
+      })
+
+  }
+
+  confirmCode = () => {
+    const { code } = this.state;
   }
 
   forward() {
