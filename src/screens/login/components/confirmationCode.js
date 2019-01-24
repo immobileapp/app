@@ -6,6 +6,7 @@ import genericStyle from '../../../genericStyle'
 import TextInput from '../../../components/input/textInput'
 import GenericStructure from './genericStructure'
 import firebase from 'react-native-firebase'
+import MaskingHelper from '../../../helpers/maskingHelper'
 
 const getMessage = () => {
   const message = Platform.OS === 'android' ?
@@ -22,39 +23,52 @@ const getMessage = () => {
 export default class ConfimationCode extends React.Component {
   state = {
     code: '',
-    valid: true
+    inputCode: '',
+    message: null
   }
 
   componentWillMount() {
-    const phoneNumber = this.props.navigation.getParam('phoneNumber')
+    this.phoneNumber = this.props.navigation.getParam('phoneNumber')
+    this.phoneNumberMasked = this.props.navigation.getParam('phoneNumberMasked')
     firebase.auth()
-      .verifyPhoneNumber(`+55${phoneNumber}`)
+      .verifyPhoneNumber(`+55${ this.phoneNumber }`)
       .on('state_changed', phoneAuthSnapshot => {
         switch (phoneAuthSnapshot.state) {
-          case firebase.auth.PhoneAuthState.CODE_SENT:
-            console.warn('code sent')
-            break
           case firebase.auth.PhoneAuthState.AUTO_VERIFIED:
-            console.warn('autoverified')
-            console.warn(phoneAuthSnapshot)
+            this.forward()
             break
-
         }
+      },
+      error => {
+        this.setState({
+          message: `Erro ao enviar código de verificação para o nº ${ this.phoneNumberMasked }`
+        })
+      },
+      phoneAuthSnapshot => {
+        this.setState({ code: phoneAuthSnapshot.code})
       })
-
   }
 
   confirmCode = () => {
-    const { code } = this.state;
+    const { inputCode, code } = this.state
+    if (inputCode !== code) {
+      return this.setState({
+        message: 'Código de verificação inválido'
+      })
+    }
+    this.forward()
   }
 
   forward() {
-    if (this.state.code === '') return this.setState({ valid: false })
+    this.props.navigation.navigate('LicencePlate', {
+      phoneNumber: this.phoneNumber
+    })
   }
 
   render() {
+    const { message, inputCode } = this.state
     return (
-      <GenericStructure forward={ () => this.forward() }
+      <GenericStructure forward={ () => this.confirmCode() }
           forwardButtonLabel="Verificar" >
         <View style={ genericStyle.justifyCenter }>
           <Text style={ style.welcomeText } >Segurança</Text>
@@ -63,13 +77,16 @@ export default class ConfimationCode extends React.Component {
           </Text>
           { getMessage() }
           <View style={ style.inputWrapper}>
-            <TextInput value={ this.state.code }
+            <TextInput value={ inputCode }
               placeholder="Informar código"
               autoCorrect={false}
               onChangeText={
-                code => this.setState({ code })
+                inputCode => this.setState({ inputCode })
               } />
-              { !this.state.valid && <Text style={ style.error }>Código inválido</Text> }
+              {
+                message &&
+                  <Text style={ style.error }>{ message }</Text>
+              }
           </View>
         </View>
       </GenericStructure>
