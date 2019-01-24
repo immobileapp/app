@@ -6,8 +6,8 @@ const watchCurrentUser = callback => (
   })
 )
 
-const newUser = (document) => {
-  saveUser({ document })
+const newUser = (phoneNumber) => {
+  saveUser({ phoneNumber })
 }
 
 const saveUser = user => {
