@@ -16,10 +16,10 @@ export default class LicencePlate extends React.Component {
   }
 
   forward() {
-    const document = this.props.navigation.getParam('document')
+    const phoneNumber = this.props.navigation.getParam('phoneNumber')
 
     CarService.addCar(this.state.licencePlate)
-    UserService.newUser(document)
+    UserService.newUser(phoneNumber)
   }
 
   handleChange(licencePlate) {
