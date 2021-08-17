@@ -33,24 +33,25 @@ export default class ConfimationCode extends React.Component {
     firebase.auth()
       .verifyPhoneNumber(`+55${ this.phoneNumber }`)
       .on('state_changed', phoneAuthSnapshot => {
-        switch (phoneAuthSnapshot.state) {
-          case firebase.auth.PhoneAuthState.AUTO_VERIFIED:
-            this.forward()
-            break
+        if (phoneAuthSnapshot.state == firebase.auth.PhoneAuthState.AUTO_VERIFIED) {
+          this.forward()
         }
       },
       error => {
+        console.warn(error)
         this.setState({
-          message: `Erro ao enviar código de verificação para o nº ${ this.phoneNumberMasked }`
+          message: `Erro ao enviar código de verificação para o número ${ this.phoneNumberMasked }`
         })
       },
       phoneAuthSnapshot => {
+        console.warn(phoneAuthSnapshot)
         this.setState({ code: phoneAuthSnapshot.code})
       })
   }
 
   confirmCode = () => {
     const { inputCode, code } = this.state
+
     if (inputCode !== code) {
       return this.setState({
         message: 'Código de verificação inválido'
